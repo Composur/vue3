@@ -10,7 +10,7 @@
   <!-- todo 列表 -->
   <ul>
     <li
-      v-for="item in todos"
+      v-for="item in computedDodos"
       :key="item.id"
       :class="{ complete: item.complete, editing: item === editTodo }"
     >
@@ -37,18 +37,59 @@
       </div>
     </li>
   </ul>
+  <div class="filter-panel">
+    <span
+      :class="{ status: completeStatus === 'all' }"
+      @click="completeStatus = 'all'"
+    >
+      全部
+    </span>
+    <span
+      :class="{ status: completeStatus === 'active' }"
+      @click="completeStatus = 'active'"
+    >
+      进行中
+    </span>
+    <span
+      :class="{ status: completeStatus === 'complete' }"
+      @click="completeStatus = 'complete'"
+    >
+      已完成
+    </span>
+  </div>
 </template>
 
 <script>
-import { reactive, toRefs } from "vue"
+import { reactive, toRefs, computed, watchEffect } from "vue"
 
+const todoStorage = {
+  fetch() {
+    return JSON.parse(localStorage.getItem("vue3-todos") || "[]")
+  },
+  save(todos) {
+    localStorage.setItem("vue3-todos", JSON.stringify(todos))
+  },
+}
+const filter = {
+  all(todos) {
+    return todos
+  },
+  active(todos) {
+    return todos.filter((item) => !item.complete)
+  },
+  complete(todos) {
+    return todos.filter((item) => item.complete)
+  },
+}
 export default {
   setup() {
     const state = reactive({
-      todos: [],
+      todos: todoStorage.fetch(),
+      computedDodos: computed(() => filter[state.completeStatus](state.todos)),
       todoTitle: "",
       beforeEditToDoTitle: null,
       editTodo: null,
+      completeStatus: "all",
     })
     function addTodo() {
       state.todos.push({
@@ -72,6 +113,7 @@ export default {
       todo.title = state.beforeEditToDoTitle
       state.editTodo = null
     }
+    watchEffect(() => todoStorage.save(state.todos))
     return {
       ...toRefs(state),
       addTodo,
@@ -103,5 +145,10 @@ export default {
 .view,
 .editing .edit {
   display: block;
+}
+.status {
+  color: red;
+}
+.filter-panel {
 }
 </style>

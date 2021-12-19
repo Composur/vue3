@@ -1,7 +1,7 @@
-git --version && node -v && npm -v
+git --version && node -v && npm -v && yarn -v
 echo '=========================build start==================== '
-npm install
-npm build
+yarn
+yarn build
 echo '=========================build success==================== '
 
 echo '=========================build docker start==================== '

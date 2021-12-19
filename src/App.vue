@@ -9,7 +9,6 @@
 
 <script>
 import Todos from "./components/compositionApi/Todos"
-// import HelloWorld from "./components/HelloWorld.vue"
 // import ToRefs from "./components/compositionApi/toRefs"
 // import Teleports from "./components/compositionApi/Teleports.vue"
 // import getCurrentInstance from "./components/compositionApi/getCurrentInstance"

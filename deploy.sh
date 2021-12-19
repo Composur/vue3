@@ -5,6 +5,10 @@ yarn build
 echo '=========================build success==================== '
 
 echo '=========================build docker start==================== '
+
+docker stop vue3_demo
+docker rm vue3_demo
 docker build -t vue3_demo .
 
-docker run --name vue3_demo -p 8082:80 -d vue3_demo
+docker run --name vue3_demo -p 8082:80 -d --restart=always vue3_demo
+echo '=========================build docker success==================== '

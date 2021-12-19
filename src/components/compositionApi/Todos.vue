@@ -3,7 +3,7 @@
     <input
       type="text"
       v-model="todoTitle"
-      placeholder="请输入"
+      placeholder="请输入任务"
       @keyup.enter="addTodo"
     />
   </div>

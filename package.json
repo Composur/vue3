@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@antv/l7plot": "0.0.3-alpha.11",
     "core-js": "^3.6.5",
     "html2canvas": "^1.0.0-rc.7",
     "vue": "^3.0.0"

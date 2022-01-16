@@ -1,5 +1,6 @@
 <template>
   <Todos />
+  <Map1Vue />
   <!-- <getCurrentInstance /> -->
   <!-- <Teleports /> -->
   <!-- <ToRefs /> -->
@@ -9,6 +10,7 @@
 
 <script>
 import Todos from "./components/compositionApi/Todos"
+import Map1Vue from "./components/Map1.vue"
 // import ToRefs from "./components/compositionApi/toRefs"
 // import Teleports from "./components/compositionApi/Teleports.vue"
 // import getCurrentInstance from "./components/compositionApi/getCurrentInstance"
@@ -21,6 +23,7 @@ export default {
     // Teleports,
     // getCurrentInstance,
     Todos,
+    Map1Vue
   },
 }
 </script>

@@ -1,6 +1,3 @@
-rm -rf vue3
-git clone https://github.com/Composur/vue3.git
-cd vue3
 git --version && node -v && npm -v && yarn -v
 echo '=========================build start==================== '
 yarn

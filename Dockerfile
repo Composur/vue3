@@ -6,6 +6,7 @@ COPY dist /usr/share/nginx/html
 # 定义向外暴露的端口号，多个端口用空格做间隔，启动容器时便于使用-p将此端口向宿主机端口映射
 EXPOSE 80
 EXPOSE 443
+EXPOSE 8082
 
 # 解释 -> '-g' 'daemon off'
 # nginx默认是以后台模式启动的，Docker未执行自定义的CMD之前，nginx的pid是1，
